@@ -15,7 +15,7 @@ class ShipMap
 	public:
 	ShipMap();
 	~ShipMap();
-	bool isHit();
+	bool isHit(int row, int col);
 	void printPlayerPhase();
 	void printEnemyPhase();
 	void addShip(int row, int col);
