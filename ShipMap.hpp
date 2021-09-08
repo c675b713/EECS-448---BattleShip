@@ -74,7 +74,7 @@ void ShipMap::addAttempt(int row, int col)
 	}
 }
 
-void ShipMap::printPlayerPhase //prints the grid showing information during player phase
+void ShipMap::printPlayerPhase() //prints the grid showing information during player phase
 {
 	cout << "A B C D E F G H I J \n\n"; //this could be used to label the columns?? subject to change ofc
 	for(int i = 0; i < 9; i++)
@@ -103,7 +103,7 @@ void ShipMap::printPlayerPhase //prints the grid showing information during play
 	}
 }
 
-void ShipMap::printPlayerPhase //prints the grid showing information during enemy phase
+void ShipMap::printPlayerPhase() //prints the grid showing information during enemy phase
 {
 	cout << "A B C D E F G H I J \n\n"; //this could be used to label the columns?? subject to change ofc
 	for(int i = 0; i < 9; i++)
