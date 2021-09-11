@@ -33,6 +33,7 @@ int main(){
 			try{
 				cout << "What column do you want to shoot at?" << endl;
 				cin >> columnLetter;
+				column = lettersToNumbers(columnLetter);
 				cout << "What row do you want to shoot at?" << endl;
 				cin << rowString;
 				if(stoi(rowString) < 10){//This is for input sanitization
