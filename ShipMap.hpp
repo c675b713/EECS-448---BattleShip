@@ -5,7 +5,7 @@
 *	Brief: The implementation file for ShipMap class
 */
 
-//PLEASE LET ME KNOW IF YOU FIND ANY MISTAKES IN HERE (This is definitely a WIP)
+//PLEASE LET ME KNOW IF YOU FIND ANY MISTAKES IN HERE 
 
 //We need to accomodate the user's entry for coordinates, either in the executive class or in these functions
 //We should probably convert the A-J into ASCII to get integers for columns??? Maybe just subtract 1 from all the row integers
@@ -15,6 +15,7 @@ using namespace std;
 
 ShipMap::ShipMap() //initializes the arrays with 0s
 {
+	lives = 0;
 	for(int i = 0; i < 9; i++)
 	{
 		for(int j = 0; j < 10; j++)
@@ -42,7 +43,7 @@ bool ShipMap::isHit(int row, int col) //returns 1 if a ship has been hit
 	}
 }
 
-void ShipMap::addShip(int row, int col) 
+void ShipMap::addShip(int row, int col) //Adds a ship to the ship array
 {
 	bool shipIsGood = 0;
 	while (shipIsGood == 0) //this might be temporary but I think its the best way to make sure that a ship is placed in an empty spot
@@ -50,6 +51,7 @@ void ShipMap::addShip(int row, int col)
 		if(ships[row][col] == 0)
 		{
 			ships[row][col] = 1;
+			lives++; //whenever a ship is added the player gains a life
 		}
 		else
 		{
@@ -58,7 +60,7 @@ void ShipMap::addShip(int row, int col)
 	}
 }
 
-void ShipMap::addAttempt(int row, int col)
+void ShipMap::addAttempt(int row, int col) //Adds an attempt to the attempt array
 {
 	bool attemptIsGood = 0;
 	while (attemptIsGood == 0) //this might be temporary but I think its the best way to make sure that a ship is placed in an empty spot
@@ -66,6 +68,15 @@ void ShipMap::addAttempt(int row, int col)
 		if(attempts[row][col] == 0)
 		{
 			ships[row][col] = 1;
+			if(isHit())
+			{
+				lives--;
+				cout << "HIT! \n"; // can change notation later 
+			}
+			else
+			{
+				cout << "Miss. "; // can change notation later
+			}
 		}
 		else
 		{
@@ -125,5 +136,17 @@ void ShipMap::printPlayerPhase() //prints the grid showing information during en
 			}
 		}
 		cout << "\n";
+	}
+}
+
+bool ShipMap::isGameOver() //returns true if there are 0 ships left
+{
+	if(lives == 0)
+	{
+		return(1);
+	}
+	else
+	{
+		return(0);
 	}
 }
