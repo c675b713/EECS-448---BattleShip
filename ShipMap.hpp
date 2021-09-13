@@ -43,19 +43,89 @@ bool ShipMap::isHit(int row, int col) //returns 1 if a ship has been hit
 	}
 }
 
-void ShipMap::addShip(int row, int col) //Adds a ship to the ship array
+void ShipMap::addShip(int row, int col, int shipSize) //Adds a ship to the ship array
 {
-	bool shipIsGood = 0;
-	while (shipIsGood == 0) //this might be temporary but I think its the best way to make sure that a ship is placed in an empty spot
+	bool shipIsGood = 0; //used to end while loop
+	char shipDirection = 'a'; 
+	bool isDirectionGood = 0;
+	while(shipIsGood == 0)
 	{
-		if(ships[row][col] == 0)
+		try 
 		{
-			ships[row][col] = 1;
-			lives++; //whenever a ship is added the player gains a life
+			if(ships[row][col] = 1) //throws when ship is already in initial space
+			{
+				throw "This space already has a ship on it.";
+			}
+			if(shipSize == 1) // places ship of size 1 in initial space
+			{
+				ships[row][col] = 1;
+				lives++; //whenever a ship is added the player gains a life
+				shipIsGood = 1;
+			}
+			else
+			{
+				cout << "Which direction would you like the ship to face? Left, Right, Up, or Down? (Please enter L, R, U, or D)\n";
+				cin >> shipDirection;
+				if(shipDirection != 'L' && shipDirection != 'R' && shipDirection != 'U' && shipDirection != 'D') //check for good input
+				{
+					throw "Please enter either L, R, U, or D";
+				}
+				else 
+				{
+					isDirectionGood = isShipDirectionGood(row, col, shipSize, shipDirection);
+					if(isShipDirectionGood == 1) //will only run if ship can be placed in that direction
+					{
+						if(shipDirection == 'L')
+						{
+							for(int i = 0; i < shipSize; i++)
+							{
+								ships[row][col-i] = 1;
+								lives++;
+							}
+							shipIsGood = 1;
+						}
+						if(shipDirection == 'R')
+						{
+							for(int i = 0; i < shipSize; i++)
+							{
+								ships[row][col+i] = 1;
+								lives++;
+							}
+							shipIsGood = 1;
+						}
+						if(shipDirection == 'U')
+						{
+							for(int i = 0; i < shipSize; i++)
+							{
+								ships[row-i][col] = 1;
+								lives++;
+							}
+							shipIsGood = 1;
+						}
+						if(shipDirection == 'D')
+						{
+							for(int i = 0; i < shipSize; i++)
+							{
+								ships[row+i][col] = 1;
+								lives++;
+							}
+							shipIsGood = 1;
+						}
+					}
+					else
+					{
+						if(isShipDirectionGood(row, col, shipSize, 'L') == 0 && isShipDirectionGood(row, col, shipSize, 'R') == 0 && isShipDirectionGood(row, col, shipSize, 'U') == 0 && isShipDirectionGood(row, col, shipSize, 'D') == 0)
+						{
+							//end the function, a ship with this length cannot be placed here
+						}
+						throw "This Direction doesn't work. please choose another";
+					}
+				}
+			}
 		}
-		else
+		catch(invalid_argument)
 		{
-			// prompts user to reenter coordinates (will do later if this is best solution)
+			//TBA
 		}
 	}
 }
@@ -67,7 +137,7 @@ void ShipMap::addAttempt(int row, int col) //Adds an attempt to the attempt arra
 	{
 		if(attempts[row][col] == 0)
 		{
-			ships[row][col] = 1;
+			attempts[row][col] = 1;
 			if(isHit())
 			{
 				lives--;
@@ -114,7 +184,7 @@ void ShipMap::printPlayerPhase() //prints the grid showing information during pl
 	}
 }
 
-void ShipMap::printPlayerPhase() //prints the grid showing information during enemy phase
+void ShipMap::printEnemyPhase() //prints the grid showing information during enemy phase
 {
 	cout << "A B C D E F G H I J \n\n"; //this could be used to label the columns?? subject to change ofc
 	for(int i = 0; i < 9; i++)
@@ -149,4 +219,78 @@ bool ShipMap::isGameOver() //returns true if there are 0 ships left
 	{
 		return(0);
 	}
+}
+
+bool ShipMap::isShipDirectionGood(int row, int col, int shipSize, char direction) //checks if a ship can be placed in a certain direction
+{
+	bool itWorks = 1;
+	if(shipDirection == 'L') 
+	{
+		if((col - (shipSize - 1)) < 0) //checks to see if ship would go off the grid
+		{
+			itWorks = 0;
+		}
+		else
+		{
+			for(int i = 0; i < shipSize; i++) //checks to see if any space is occupied
+			{
+				if(ships[row][col-i] == 1)
+				{
+					itWorks = 0;
+				}
+			}
+		}
+	}
+	if(shipDirection == 'R')
+	{
+		if((col + (shipSize - 1)) > 9) //checks to see if ship would go off the grid
+		{
+			itWorks = 0;
+		}
+		else
+		{
+			for(int i = 0; i < shipSize; i++) //checks to see if any space is occupied
+			{
+				if(ships[row][col+i] == 1)
+				{
+					itWorks = 0;
+				}
+			}
+		}
+	}
+	if(shipDirection == 'U') 
+	{
+		if((row - (shipSize - 1)) < 0) //checks to see if ship would go off the grid
+		{
+			itWorks = 0;
+		}
+		else
+		{
+			for(int i = 0; i < shipSize; i++) //checks to see if any space is occupied
+			{
+				if(ships[row-i][col] == 1)
+				{
+					itWorks = 0;
+				}
+			}
+		}
+	}
+	if(shipDirection == 'D') 
+	{
+		if((row + (shipSize - 1)) > 8) //checks to see if ship would go off the grid
+		{
+			itWorks = 0;
+		}
+		else
+		{
+			for(int i = 0; i < shipSize; i++) //checks to see if any space is occupied
+			{
+				if(ships[row+i][col] == 1)
+				{
+					itWorks = 0;
+				}
+			}
+		}
+	}
+	return(itWorks);
 }
