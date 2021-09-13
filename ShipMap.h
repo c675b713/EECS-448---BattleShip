@@ -39,10 +39,10 @@ class ShipMap
 	*/
 	void printEnemyPhase();
 
-	/** @pre Coordinates for the specific column and row
+	/** @pre Coordinates for the specific column and row as well as length of ship
 	*   @post Adds a ship to the ship array
 	*/
-	void addShip(int row, int col);
+	void addShip(int row, int col, int shipSize);
 
 	/** @pre Coordinates for the specific column and row
 	*   @post Adds an attempt to the attempt array
@@ -54,6 +54,12 @@ class ShipMap
 	*   @return Returns true if player has 0 lives remaining
 	*/
 	bool isGameOver();
+	
+	/** @pre Coordinates for column and row, the size of the ship, and the direction the ship wants to face
+	*   @post None
+	*   @return Returns true if player has 0 lives remaining
+	*/
+	bool isShipDirectionGood(int row, int col, int shipSize, char direction)
 	
 	private:
 	bool ships[9][10];
