@@ -38,7 +38,7 @@ int main(){
 				cin >> columnLetter;
 				column = lettersToNumbers(columnLetter);
 				cout << "What row do you want to shoot at?" << endl;
-				cin << rowString;
+				cin >> rowString;
 				if(stoi(rowString) < 10){//This is for input sanitization
 					row = stoi(rowString);
 				}
@@ -53,8 +53,10 @@ int main(){
 				}
 				validInput = true;//if we got to this point without throwing an exception, then we can stop looping and pass the turn
 			}
-			catch ("Invalid Letter"){
-				//good error message
+			catch (string e){
+				if (e == "Invalid Letter"){
+					cout << "That letter is not valid, please try a different letter" << endl;
+				}
 			}
 			catch(invalid_argument){
 				//good error message
@@ -101,6 +103,6 @@ int lettersToNumbers(string letter){
 		return 9;
 	}
 	else {
-		throw "Invalid Letter"
+		throw "Invalid Letter";
 	}
 }
