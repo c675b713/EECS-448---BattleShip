@@ -31,7 +31,7 @@ int main(){
 		else{
 			player2.printPlayerPhase();
 		}
-		validInput = false)
+		validInput = false;
 		while(validInput == false){
 			try{
 				cout << "What column do you want to shoot at?" << endl;
@@ -60,7 +60,7 @@ int main(){
 				//good error message
 			}
 		}
-		if(currentTurn = "player1"){
+		if(currentTurn == "player1"){
 			currentTurn = "player2";
 		}
 		else{
