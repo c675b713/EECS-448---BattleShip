@@ -70,38 +70,37 @@ int main(){
 }
 
 int lettersToNumbers(string letter){
-	switch(letter){
-		case "A" || "a":
-			return 0;
-			break;
-		case "B" || "b":
-			return 1;
-			break;
-		case "C" || "c":
-			return 2;
-			break;
-		case "D" || "d":
-			return 3;
-			break;
-		case "E" || "e":
-			return 4;
-			break;
-		case "F" || "f":
-			return 5;
-			break;
-		case "G" || "g":
-			return 6;
-			break;
-		case "H" || "h":
-			return 7;
-			break;
-		case "I" || "i":
-			return 8;
-			break;
-		case "J" || "j":
-			return 9;
-			break;
-		default:
-			throw "Invalid Letter"
+	if(letter == "A" || letter == "a"){
+		return 0;
+	}
+	else if(letter == "B" || letter == "b"){
+		return 1;
+	}
+	else if(letter == "C" || letter == "c"){
+		return 2;
+	}
+	else if(letter == "D" || letter == "d"){
+		return 3;
+	}
+	else if(letter == "E" || letter == "e"){
+		return 4;
+	}
+	else if(letter == "F" || letter == "f"){
+		return 5;
+	}
+	else if(letter == "G" || letter == "g"){
+		return 6;
+	}
+	else if(letter == "H" || letter == "H"){
+		return 7;
+	}
+	else if(letter == "I" || letter == "i"){
+		return 8;
+	}
+	else if(letter == "J" || letter == "j"){
+		return 9;
+	}
+	else {
+		throw "Invalid Letter"
 	}
 }
