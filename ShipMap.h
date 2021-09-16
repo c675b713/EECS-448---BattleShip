@@ -59,12 +59,12 @@ class ShipMap
 	*   @post None
 	*   @return Returns true if player has 0 lives remaining
 	*/
-	bool isShipDirectionGood(int row, int col, int shipSize, char direction)
+	bool isShipDirectionGood(int row, int col, int shipSize, char direction);
 	
 	private:
 	bool ships[9][10];
 	bool attempts[9][10];
 	int lives;
-}
+};
 
 #endif
