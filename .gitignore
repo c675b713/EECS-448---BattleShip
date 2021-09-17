@@ -1,0 +1,6 @@
+
+.vscode/tasks.json
+.vscode/configurationCache.log
+.vscode/dryrun.log
+.vscode/settings.json
+*.o
