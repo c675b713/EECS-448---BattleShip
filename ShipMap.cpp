@@ -54,7 +54,7 @@ void ShipMap::addShip(int row, int col, int shipSize) //Adds a ship to the ship 
 	{
 		try 
 		{
-			if(ships[row][col] = 1) //throws when ship is already in initial space
+			if(ships[row][col] == 1) //throws when ship is already in initial space
 			{
 				throw "This space already has a ship on it.";
 			}
