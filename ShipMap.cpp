@@ -12,6 +12,7 @@
 //Also we need to find the best way to make sure all the user's inputs work with the program
 
 #include "ShipMap.h"
+#include <stdexcept>
 using namespace std;
 
 ShipMap::ShipMap() //initializes the arrays with 0s

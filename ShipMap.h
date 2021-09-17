@@ -9,6 +9,8 @@
 #define SHIP_MAP_H
 
 #include <iostream>
+#include <stdexcept>
+
 
 class ShipMap
 {

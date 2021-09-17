@@ -8,7 +8,7 @@
 #include <iostream>
 #include "SetUp.h"
 #include "ShipMap.h"//dunno if i need this
-
+#include <stdexcept>
 
 SetUp::SetUp()
 {

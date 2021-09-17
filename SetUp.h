@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include "ShipMap.h"
+#include <stdexcept>
 
 class SetUp
 {

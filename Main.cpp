@@ -8,6 +8,7 @@
 
 #include "SetUp.h"
 #include <iostream>
+#include <stdexcept>
 using namespace std;
 
 int lettersToNumbers(string letter){
@@ -54,7 +55,7 @@ int main(){
 	player2 = setUpObject.returnMap(2);
 	
 	//I was deciding whether this should be a bool, but currently think this should be a string or an enum
-	//for the purposes of readablility
+	//for the purposes of readability
 	string currentTurn = "player1";
 	string columnLetter, rowString;
 	int column, row;
