@@ -95,6 +95,9 @@ int main(){
 				if (e == "Invalid Letter"){
 					cout << "That letter is not valid, please try a different letter" << endl;
 				}
+				else{
+					cout << e << endl;
+				}
 			}
 			catch(invalid_argument){
 				//good error message
