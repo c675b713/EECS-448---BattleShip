@@ -9,6 +9,7 @@
 #include "SetUp.h"
 #include "ShipMap.h"//dunno if i need this
 
+
 SetUp::SetUp()
 {
   int row1 = 0;
@@ -19,11 +20,11 @@ SetUp::SetUp()
   std::cout<<"Welcome to Battleship!\n";
   for(int i = 1; i<2; i++)
   {
-    std::cout<<"Player "i", make your board! How many ships would you like to make?\n";
+    std::cout<<"Player " << i << ", make your board! How many ships would you like to make?\n";
     std::cin>>ships;
     for(int j = 0; j<ships; j++)
     {//i need to make while for making correct row, column coordinates
-      std::cout<<"Enter the coordinates of your 1x"j+1" ship.\nRow: ";
+      std::cout<<"Enter the coordinates of your 1x" << j+1 << " ship.\nRow: ";
       if(i == 1)
       {
         std::cin>>row1;

@@ -26,6 +26,6 @@ class SetUp
   private:
   ShipMap player1_grid;//two ShipMap objects
   ShipMap player2_grid;
-}
+};
 
 #endif
