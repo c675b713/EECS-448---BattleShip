@@ -23,10 +23,11 @@ class SetUp
   *post: a ShipMap object is returned
   */
   ShipMap returnMap(int player);
+  static int lettersToNumbers(std::string letter);
   
   private:
-  ShipMap player1_grid;//two ShipMap objects
-  ShipMap player2_grid;
+  ShipMap player1Map;//two ShipMap objects
+  ShipMap player2Map;
 };
 
 #endif

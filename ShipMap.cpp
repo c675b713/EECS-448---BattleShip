@@ -56,7 +56,7 @@ void ShipMap::addShip(int row, int col, int shipSize) //Adds a ship to the ship 
 		{
 			if(ships[row][col] == 1) //throws when ship is already in initial space
 			{
-				throw "This space already has a ship on it.";
+				throw string("This space already has a ship on it.");
 			}
 			if(shipSize == 1) // places ship of size 1 in initial space
 			{
@@ -70,7 +70,7 @@ void ShipMap::addShip(int row, int col, int shipSize) //Adds a ship to the ship 
 				cin >> shipDirection;
 				if(shipDirection != 'L' && shipDirection != 'R' && shipDirection != 'U' && shipDirection != 'D') //check for good input
 				{
-					throw "Please enter either L, R, U, or D";
+					throw string("Please enter either L, R, U, or D");
 				}
 				else 
 				{
@@ -120,7 +120,7 @@ void ShipMap::addShip(int row, int col, int shipSize) //Adds a ship to the ship 
 						{
 							//end the function, a ship with this length cannot be placed here
 						}
-						throw "This Direction doesn't work. please choose another";
+						throw string("This Direction doesn't work. please choose another");
 					}
 				}
 			}
@@ -149,10 +149,12 @@ void ShipMap::addAttempt(int row, int col) //Adds an attempt to the attempt arra
 			{
 				cout << "Miss. "; // can change notation later
 			}
+			attemptIsGood = 1;
 		}
 		else
 		{
 			// prompts user to reenter coordinates (will do later if this is best solution)
+			throw string("You have already shot that square, please try again.");
 		}
 	}
 }

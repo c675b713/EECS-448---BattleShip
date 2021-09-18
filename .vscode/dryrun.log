@@ -1,4 +1,12 @@
 make.exe -f "D:\College\Junior\EECS_448\EECS-448---BattleShip" --dry-run --keep-going --print-directory
-'"make.exe"' is not recognized as an internal or external command,
-operable program or batch file.
+make: Entering directory 'd:/College/Junior/EECS_448/EECS-448---BattleShip'
+ 
+make: D:\College\Junior\EECS_448\EECS-448---BattleShip: Permission denied
+ 
+make: *** No rule to make target 'D:\College\Junior\EECS_448\EECS-448---BattleShip'.
+make: Failed to remake makefile 'D:\College\Junior\EECS_448\EECS-448---BattleShip'.
+ 
+make: Leaving directory 'd:/College/Junior/EECS_448/EECS-448---BattleShip'
+ 
+make: *** No targets specified and no makefile found.  Stop.
  

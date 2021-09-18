@@ -11,41 +11,6 @@
 #include <stdexcept>
 using namespace std;
 
-int lettersToNumbers(string letter){
-	if(letter == "A" || letter == "a"){
-		return 0;
-	}
-	else if(letter == "B" || letter == "b"){
-		return 1;
-	}
-	else if(letter == "C" || letter == "c"){
-		return 2;
-	}
-	else if(letter == "D" || letter == "d"){
-		return 3;
-	}
-	else if(letter == "E" || letter == "e"){
-		return 4;
-	}
-	else if(letter == "F" || letter == "f"){
-		return 5;
-	}
-	else if(letter == "G" || letter == "g"){
-		return 6;
-	}
-	else if(letter == "H" || letter == "H"){
-		return 7;
-	}
-	else if(letter == "I" || letter == "i"){
-		return 8;
-	}
-	else if(letter == "J" || letter == "j"){
-		return 9;
-	}
-	else {
-		throw "Invalid Letter";
-	}
-}
 
 int main(){
 	ShipMap player1;
@@ -64,24 +29,24 @@ int main(){
 	while (!player1.isGameOver() && !player2.isGameOver()){//while neither player has lost the game
 		cout << "Hello " + currentTurn + "! Here is your opponent's board" << endl;
 		if(currentTurn == "player1"){
-			player2.printPlayerPhase();
+			player2.printEnemyPhase();
 		}
 		else{
-			player2.printPlayerPhase();
+			player1.printEnemyPhase();
 		}
 		validInput = false;
 		while(validInput == false){
 			try{
 				cout << "What column do you want to shoot at?" << endl;
 				cin >> columnLetter;
-				column = lettersToNumbers(columnLetter);
+				column = SetUp::lettersToNumbers(columnLetter);
 				cout << "What row do you want to shoot at?" << endl;
 				cin >> rowString;
 				if(stoi(rowString) < 10){//This is for input sanitization
 					row = stoi(rowString);
 				}
 				else{
-					throw "Row out of bounds";
+					throw string("Row out of bounds");
 				}
 				if(currentTurn == "player1"){
 					player2.addAttempt(column, row-1);
@@ -109,5 +74,11 @@ int main(){
 		else{
 			currentTurn = "player1";
 		}
+	}
+	if(player1.isGameOver()){
+		cout << "Congratulations Player 2! You win!" << endl;
+	}
+	else {
+		cout << "congratulations Player 1! You win!" << endl;
 	}
 }
