@@ -9,36 +9,34 @@ SetUp::SetUp(){
 	cout << "How many ships do you want to play with?";
 	try{
 		cin >> ships;
-    if(ships < 1 || ships > 6){ 
-      throw string("wrong number of ships");
-    }
+    		if(ships < 1 || ships > 6){ 
+   			throw string("wrong number of ships");
+   		}
 	}
 	catch(...){
 		cout << "That is an invalid number of ships! Please restart the program to try again." << endl;
 	}
 	for (int playerNum = 1; playerNum<=2; playerNum++){
-	  cout << "Hello Player " << playerNum << "!" << endl;
+		cout << "Hello Player " << playerNum << "!" << endl;
 		for (int i =1; i<=ships; i++){
-      if(playerNum == 1){
-        player1Map.printPlayerPhase();
-      }
-      else{
-        player2Map.printPlayerPhase();
-      }
+			if(playerNum == 1){
+        			player1Map.printPlayerPhase();
+    			}
+    			else{
+				player2Map.printPlayerPhase();
+			}
 			valid_input = false;
 			while(valid_input == false){
 				try{
 					cout << "Enter the starting position of your 1x" << i << " ship. \nColumn:";
-          cin >> colString;
+          				cin >> colString;
 					col = SetUp::lettersToNumbers(colString);
-          cout << "Row: ";
+          				cout << "Row: ";
 					cin >> rowString;
 					row = stoi(rowString);//throws an invalid_argument exeption when it fails;
 					if(row < 1 || row > 9){
 						throw string("Out of Bounds");
 					}
-					
-					
 					if(playerNum == 1){
 						player1Map.addShip(row-1, col, i);
 					}
@@ -47,7 +45,7 @@ SetUp::SetUp(){
 					}
 					valid_input = true;//This line will only be reached if we don't throw an exception
 				}
-        catch (string e){
+        			catch (string e){
 					if(e == "Out of Bounds"){
 						cout << "That number is not a row number, please try again!" << endl;
 					}
@@ -62,8 +60,8 @@ SetUp::SetUp(){
 					cout << "That is not a valid number, please try again" << endl;
 				}
 				catch(...){
-          cout << "what?" << endl;
-        }
+          				cout << "what?" << endl;
+				}
 			}
 		}
 	}
