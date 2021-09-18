@@ -1,77 +1,120 @@
-/*
-*   File: SetUp.cpp
-*   Author: Zachary Andrews
-*   Date: 09/8/2021
-*   Brief: Implementation file for setup
-*/
-
 #include <iostream>
 #include "SetUp.h"
-#include "ShipMap.h"//dunno if i need this
-#include <stdexcept>
-
-SetUp::SetUp()
-{
-  int row1 = 0;
-  int col1= 0;
-  int row2 = 0;
-  int col2 = 0;
-  int ships = 0;
-  std::cout<<"Welcome to Battleship!\n";
-  for(int i = 1; i<2; i++)
-  {
-    std::cout<<"Player " << i << ", make your board! How many ships would you like to make?\n";
-    std::cin>>ships;
-    for(int j = 0; j<ships; j++)
-    {//i need to make while for making correct row, column coordinates
-      std::cout<<"Enter the coordinates of your 1x" << j+1 << " ship.\nRow: ";
-      if(i == 1)
-      {
-        std::cin>>row1;
-      }
-      else
-      {
-        std::cin>>row2;
-      }
-      if(row1>9 || row1<1 || row2>9 || row2<1)
-      {
-        //need to make while loops for conditions
-      }
-      std::cout<<"Column: ";
-      if(i == 1)
-      {
-        std::cin>>col1;
-        if(col1>9 || col1<1)
-        {
-          //while loop needed instead of lone if
-        }
-        player1_grid.addShip(row1, col1, j+1);//assuming there will be a parameter for length of ship
-      }
-      else
-      {
-        do
-        {
-          std::cout<<"Please type in column within 9x10 bounds of board: ";
-          std::cin>>col2;
-          player2_grid.addShip(row2, col2, j+1);
-        }while(col2>9 || col2<1);
-      }
+using namespace std;
+SetUp::SetUp(){
+	int row, col, ships;
+	string rowString, colString;
+	bool valid_input = false;
+	cout << "Welcome to Battleship!" << endl;
+	cout << "How many ships do you want to play with?";
+	try{
+		cin >> ships;
+    if(ships < 1 || ships > 6){ 
+      throw string("wrong number of ships");
     }
-  }
+	}
+	catch(...){
+		cout << "That is an invalid number of ships! Please restart the program to try again." << endl;
+	}
+	for (int playerNum = 1; playerNum<=2; playerNum++){
+	  cout << "Hello Player " << playerNum << "!" << endl;
+		for (int i =1; i<=ships; i++){
+      if(playerNum == 1){
+        player1Map.printPlayerPhase();
+      }
+      else{
+        player2Map.printPlayerPhase();
+      }
+			valid_input = false;
+			while(valid_input == false){
+				try{
+					cout << "Enter the starting position of your 1x" << i << " ship. \nColumn:";
+          cin >> colString;
+					col = SetUp::lettersToNumbers(colString);
+          cout << "Row: ";
+					cin >> rowString;
+					row = stoi(rowString);//throws an invalid_argument exeption when it fails;
+					if(row < 1 || row > 9){
+						throw string("Out of Bounds");
+					}
+					
+					
+					if(playerNum == 1){
+						player1Map.addShip(row-1, col, i);
+					}
+					else{
+						player2Map.addShip(row-1, col, i);
+					}
+					valid_input = true;//This line will only be reached if we don't throw an exception
+				}
+        catch (string e){
+					if(e == "Out of Bounds"){
+						cout << "That number is not a row number, please try again!" << endl;
+					}
+					else if(e == "Invalid Letter"){
+						cout << "That is not the name of a column, please try again!" << endl;
+					}
+					else{
+						cout << e << endl;
+					}
+				}
+				catch(invalid_argument){
+					cout << "That is not a valid number, please try again" << endl;
+				}
+				catch(...){
+          cout << "what?" << endl;
+        }
+			}
+		}
+	}
 }
-
+	
+				
 ShipMap SetUp::returnMap(int player)
 {
-  if(player == 1)
-  {
-    return(player1_grid);
-  }
-  if(player == 2)
-  {
-    return(player2_grid);
-  }
-  else
-  {
-    //throw exception
-  }
+	if(player == 1)
+	{
+		return(player1Map);
+	}
+	if(player == 2)
+	{
+		return(player2Map);
+	}
 }
+
+int SetUp::lettersToNumbers(string letter){
+	if(letter == "A" || letter == "a"){
+		return 0;
+	}
+	else if(letter == "B" || letter == "b"){
+		return 1;
+	}
+	else if(letter == "C" || letter == "c"){
+		return 2;
+	}
+	else if(letter == "D" || letter == "d"){
+		return 3;
+	}
+	else if(letter == "E" || letter == "e"){
+		return 4;
+	}
+	else if(letter == "F" || letter == "f"){
+		return 5;
+	}
+	else if(letter == "G" || letter == "g"){
+		return 6;
+	}
+	else if(letter == "H" || letter == "H"){
+		return 7;
+	}
+	else if(letter == "I" || letter == "i"){
+		return 8;
+	}
+	else if(letter == "J" || letter == "j"){
+		return 9;
+	}
+	else {
+		throw string("Invalid Letter");
+	}
+}
+	
