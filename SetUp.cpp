@@ -1,6 +1,7 @@
 #include <iostream>
 #include "SetUp.h"
 using namespace std;
+
 SetUp::SetUp(){
 	int row, col, ships;
 	string rowString, colString;
@@ -32,7 +33,7 @@ SetUp::SetUp(){
 					col = SetUp::lettersToNumbers(colString);
           				cout << "Row: ";
 					cin >> rowString;
-					row = stoi(rowString);//throws an invalid_argument exception when it fails;
+					row = stoi(rowString);/// throws an invalid_argument exception when it fails;
 					if(row < 1 || row > 9){
 						throw string("Out of Bounds");
 					}
@@ -70,7 +71,7 @@ SetUp::SetUp(){
 							cout << "\n";
 						}
 					}
-					valid_input = true;//This line will only be reached if we don't throw an exception
+					valid_input = true;/// This line will only be reached if we don't throw an exception
 				}
         			catch (string e){
 					if(e == "Out of Bounds"){

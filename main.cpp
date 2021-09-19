@@ -5,12 +5,10 @@
 *	Brief: The implementation file for executive class
 */
 
-
 #include "SetUp.h"
 #include <iostream>
 #include <stdexcept>
 using namespace std;
-
 
 int main(){
 	ShipMap player1;
@@ -25,7 +23,7 @@ int main(){
 	bool validInput;
 	bool isStarted = 0;
 	
-	while (!player1.isGameOver() && !player2.isGameOver()){//while neither player has lost the game
+	while (!player1.isGameOver() && !player2.isGameOver()){///while neither player has lost the game
 	  cout << string(1000, '\n');
 	  cout << "-----\nLegend\n-----\nX: Hit\n*: Opposing player's missed attempt\n#: Live ship\n~: Empty ocean\n\n";
 		cout << "Hello " + currentTurn + "! Here are the attempts you've made on your opponent's board" << endl;
@@ -67,7 +65,7 @@ int main(){
 				column = SetUp::lettersToNumbers(columnLetter);
 				cout << "What row do you want to shoot at?" << endl;
 				cin >> rowString;
-				if(stoi(rowString) < 10 && stoi(rowString) > 0){//This is for input sanitization
+				if(stoi(rowString) < 10 && stoi(rowString) > 0){///This is for input sanitization
 					row = stoi(rowString);
 				}
 				else{
@@ -79,7 +77,7 @@ int main(){
 				else{
 					player1.addAttempt(row-1, column);
 				}
-				validInput = true;//if we got to this point without throwing an exception, then we can stop looping and pass the turn
+				validInput = true;///if we got to this point without throwing an exception, then we can stop looping and pass the turn
 			}
 			catch (string e){
 				if (e == "Invalid Letter"){
@@ -90,7 +88,7 @@ int main(){
 				}
 			}
 			catch(invalid_argument){
-				//good error message
+				///good error message
 			}
 		}
 		if(currentTurn == "player1"){

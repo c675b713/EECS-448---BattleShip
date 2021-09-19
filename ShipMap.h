@@ -11,56 +11,79 @@
 #include <iostream>
 #include <stdexcept>
 
-
 class ShipMap
 {
 	public:
-	/** @pre None
-	*   @post The arrays are initialized and lives is set to 0
-	*/
+	///constructor that makes the ShipMap object
+	///
+	/// @pre none
+	/// @post the arrays are initialized and lives is set to 0
+	/// @param none
 	ShipMap();
 
-	/** @pre None
-	*   @post None
-	*/
+	///ShipMap destructor
 	~ShipMap();
 
-	/** @pre Coordinates for the specific column and row
-	*   @post None
-	*   @return Returns true if the there is both a ship and an attempt in corrsponding spots (ship has been hit)
-	*/
+	///function that determines if ship has been hit
+	///
+	///this function returns a bool, true if ship has been hit, false if not 
+	/// @pre Coordinates for the specific column and row
+	/// @param row coordinate 
+	/// @param col coordinate 
+	/// @return Returns true if the there is both a ship and an attempt in corrsponding spots (ship has been hit)
 	bool isHit(int row, int col);
 
-	/** @pre None
-	*   @post Prints out the map of ships during the player's phase
-	*/
+	/// prints player phase
+	///
+	/// prints the board of what the current player would see
+	/// @pre None
+	/// @post Prints out the map of ships during the player's phase
 	void printPlayerPhase();
 
-	/** @pre None
-	*   @post Prints out the map of ships during the enemy's phase
-	*/
+	/// prints enemy phase
+	///
+	/// prints out what the enemies board looks like for current player
+	/// @pre None
+	/// @post Prints out the map of ships during the enemy's phase
 	void printEnemyPhase();
 
-	/** @pre Coordinates for the specific column and row as well as length of ship
-	*   @post Adds a ship to the ship array
-	*/
+	/// add ship function
+	///
+	/// function that takes in coordinates and shipsize then adds it the board
+	/// @pre Coordinates for the specific column and row as well as length of ship
+	/// @param row coordinate 
+	/// @param col coordinate 
+	/// @param shipSize size of ship to be added
+	/// @post Adds a ship to the ship array
 	void addShip(int row, int col, int shipSize);
 
-	/** @pre Coordinates for the specific column and row
-	*   @post Adds an attempt to the attempt array
-	*/
+	/// add attempt
+	///
+	/// this functopm adds an attempt to array of attempts
+	/// @pre Coordinates for the specific column and row
+	/// @param row coordinate 
+	/// @param col coordinate 
+	/// @post Adds an attempt to the attempt array
 	void addAttempt(int row, int col);
 
-	/** @pre None
-	*   @post None
-	*   @return Returns true if player has 0 lives remaining
-	*/
+	/// determines if game is over
+	///
+	/// boolean function that keeps track of number of ships left and when 0  ships are left returns true 
+	/// @pre None
+	/// @post None
+	/// @return Returns true if player has 0 lives remaining
 	bool isGameOver();
 	
-	/** @pre Coordinates for column and row, the size of the ship, and the direction the ship wants to face
-	*   @post None
-	*   @return Returns true if player has 0 lives remaining
-	*/
+	/// determines if ship direction is good
+	///
+	/// when players are choosing placement of ship, this function determines if the placement is valid and not overlapping and other ships or out of bounds
+	/// @pre Coordinates for column and row, the size of the ship, and the direction the ship wants to face
+	/// @param row coordinate 
+	/// @param col coordinate 
+	/// @param shipsize takes in current size of ship
+	/// @param direction takes in L (Left), R (Right), U (Up), or D (Down)
+	/// @post None
+	/// @return true if the direction of ship placement is not overlapping another ship or out of bounds
 	bool isShipDirectionGood(int row, int col, int shipSize, char direction);
 	
 	private:

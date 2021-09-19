@@ -15,18 +15,29 @@
 class SetUp
 {
   public:
-  //sets up 9x10 boards via ship map methods; welcomes user
+
+  ///Sets up the game board
+  ///
+  ///sets up a 9x10 board via ship map methods and welcomes users. 
+  ///Determines if input is good/bad
+  ///Asks user for # of ships
   SetUp();
-  /*
-  *pre: ship maps set up; need to be altered in some way
-  *params: player number
-  *post: a ShipMap object is returned
-  */
+ 
+  ///takes in a play and returns map
+  ///
+  ///@pre ship maps set up
+  ///@param player - takes in a player and returns their map and hits/misses
+  ///@post returns map object after each turn
   ShipMap returnMap(int player);
+
+  ///converts letters to numbers
+  /// 
+  ///static function that takes in a letter as colum and conver to number for array format
+  ///@param letter that is chosen from column input
   static int lettersToNumbers(std::string letter);
   
   private:
-  ShipMap player1Map;//two ShipMap objects
+  ShipMap player1Map;/// two ShipMap objects
   ShipMap player2Map;
 };
 
