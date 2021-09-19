@@ -1,7 +1,7 @@
 /**
 *	File Name: Main.hpp
 *	Author: Mat Besch, et al.
-*	Date: 09/08/2021 
+*	Date: 09/08/2021
 *	Brief: The implementation file for executive class
 */
 
@@ -42,14 +42,14 @@ int main(){
 				column = SetUp::lettersToNumbers(columnLetter);
 				cout << "What row do you want to shoot at?" << endl;
 				cin >> rowString;
-				if(stoi(rowString) < 10){//This is for input sanitization
+				if(stoi(rowString) < 10 && stoi(rowString) > 0){//This is for input sanitization
 					row = stoi(rowString);
 				}
 				else{
 					throw string("Row out of bounds");
 				}
 				if(currentTurn == "player1"){
-					player2.addAttempt(row-1, column); 
+					player2.addAttempt(row-1, column);
 				}
 				else{
 					player1.addAttempt(row-1, column);
