@@ -40,13 +40,35 @@ SetUp::SetUp(){
 						player1Map.addShip(row-1, col, i);
 						cout << "Hit enter to turn over screen to Player 2";
 						cin >> emptyString;
-						cout << string(1000, '\n');
+						for(int n = 0; n < 10; n++){
+							cout << "\n";
+							cout << "\n";
+							cout << "\n";
+							cout << "\n";
+							cout << "\n";
+							cout << "\n";
+							cout << "\n";
+							cout << "\n";
+							cout << "\n";
+							cout << "\n";
+						}
 					}
 					else{
 						player2Map.addShip(row-1, col, i);
 						cout << "Hit enter to turn over screen to Player 1";
 						cin >> emptyString;
-						cout << string(1000, '\n');
+						for(int n = 0; n < 10; n++){
+							cout << "\n";
+							cout << "\n";
+							cout << "\n";
+							cout << "\n";
+							cout << "\n";
+							cout << "\n";
+							cout << "\n";
+							cout << "\n";
+							cout << "\n";
+							cout << "\n";
+						}
 					}
 					valid_input = true;//This line will only be reached if we don't throw an exception
 				}
