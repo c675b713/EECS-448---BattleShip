@@ -4,6 +4,7 @@ using namespace std;
 SetUp::SetUp(){
 	int row, col, ships;
 	string rowString, colString;
+	string emptyString;
 	bool valid_input = false;
 	cout << "Welcome to Battleship!" << endl;
 	cout << "How many ships do you want to play with?\n";
@@ -11,7 +12,7 @@ SetUp::SetUp(){
 	{
 		cin >> ships;
     		if(ships < 1 || ships > 6){
-   			cout << "That is an invalid number of ships! Please try again." << endl;
+   			cout << "That is an invalid number of ships! Please try again.\n" << endl;
    		}
 	}while(ships<1 || ships > 6);
 	for (int playerNum = 1; playerNum<=2; playerNum++){
@@ -37,25 +38,31 @@ SetUp::SetUp(){
 					}
 					if(playerNum == 1){
 						player1Map.addShip(row-1, col, i);
+						cout << "Hit enter to turn over screen to Player 2";
+						cin >> emptyString;
+						cout << string(1000, '\n');
 					}
 					else{
 						player2Map.addShip(row-1, col, i);
+						cout << "Hit enter to turn over screen to Player 1";
+						cin >> emptyString;
+						cout << string(1000, '\n');
 					}
 					valid_input = true;//This line will only be reached if we don't throw an exception
 				}
         			catch (string e){
 					if(e == "Out of Bounds"){
-						cout << "That number is not a row number, please try again!" << endl;
+						cout << "That number is not a row number, please try again!\n" << endl;
 					}
 					else if(e == "Invalid Letter"){
-						cout << "That is not the name of a column, please try again!" << endl;
+						cout << "That is not the name of a column, please try again!\n" << endl;
 					}
 					else{
 						cout << e << endl;
 					}
 				}
 				catch(invalid_argument){
-					cout << "That is not a valid number, please try again" << endl;
+					cout << "That is not a valid number, please try again\n" << endl;
 				}
 				catch(...){
           				cout << "what?" << endl;
