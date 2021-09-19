@@ -155,6 +155,7 @@ void ShipMap::addAttempt(int row, int col) ///Adds an attempt to the attempt arr
 		{
 			// prompts user to reenter coordinates (will do later if this is best solution)
 			throw string("You have already shot that square, please try again.");
+		}
 	}
 }
 
