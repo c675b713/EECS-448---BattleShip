@@ -38,7 +38,7 @@ SetUp::SetUp(){
 					}
 					if(playerNum == 1){
 						player1Map.addShip(row-1, col, i);
-						cout << "Hit enter to turn over screen to Player 2";
+						cout << "Type any character and hit enter to turn over screen to Player 2";
 						cin >> emptyString;
 						for(int n = 0; n < 10; n++){
 							cout << "\n";
@@ -55,7 +55,7 @@ SetUp::SetUp(){
 					}
 					else{
 						player2Map.addShip(row-1, col, i);
-						cout << "Hit enter to turn over screen to Player 1";
+						cout << "Type any character and hit enter to turn over screen to Player 1";
 						cin >> emptyString;
 						for(int n = 0; n < 10; n++){
 							cout << "\n";
