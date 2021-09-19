@@ -24,15 +24,14 @@
 */
 var NAVTREE =
 [
-  [ "448-Battleship", "index.html", [
-    [ "README", "md___users_cabennetts__desktop_proj1__e_e_c_s_448____battle_ship__documentation__r_e_a_d_m_e.html", null ],
+  [ "Battleship", "index.html", [
+    [ "README", "md__documentation__r_e_a_d_m_e.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ],
-        [ "Variables", "functions_vars.html", null ]
+        [ "Functions", "functions_func.html", null ]
       ] ]
     ] ],
     [ "Files", "files.html", [
@@ -47,7 +46,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_main_8hpp.html"
+"_set_up_8cpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

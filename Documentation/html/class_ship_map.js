@@ -6,8 +6,7 @@ var class_ship_map =
     [ "addShip", "class_ship_map.html#a3f801ab1ccb30b8697df51e6bbe7ead7", null ],
     [ "isGameOver", "class_ship_map.html#a6dbc6a05cdc3ff75bf43f66b9a23fd47", null ],
     [ "isHit", "class_ship_map.html#acbcf28e008f8852cba70071dbd01d3d7", null ],
+    [ "isShipDirectionGood", "class_ship_map.html#a881a6669552d2fba7d88f53c1ef21985", null ],
     [ "printEnemyPhase", "class_ship_map.html#ada4c2a63b5cf6f8cac09c5827cb36a7c", null ],
-    [ "printPlayerPhase", "class_ship_map.html#a3406681bb484d65d1ee500e373facd52", null ],
-    [ "attempts", "class_ship_map.html#a4f667fa02eb762498d0988275b4715d6", null ],
-    [ "lives", "class_ship_map.html#a2778347a3e33802924b404067ff3a5e1", null ]
+    [ "printPlayerPhase", "class_ship_map.html#a3406681bb484d65d1ee500e373facd52", null ]
 ];

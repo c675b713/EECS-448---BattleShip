@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_7eshipmap_0',['~ShipMap',['../class_ship_map.html#a82afc59f9e7ed5b8d208de36bab9236c',1,'ShipMap']]]
+  ['setup_0',['SetUp',['../class_set_up.html#a3e6bcef0f800ce09183e82033de9d40b',1,'SetUp']]],
+  ['shipmap_1',['ShipMap',['../class_ship_map.html#af52a69332839e08c8f4c6e24758f32da',1,'ShipMap']]]
 ];
