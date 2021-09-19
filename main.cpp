@@ -49,10 +49,10 @@ int main(){
 					throw string("Row out of bounds");
 				}
 				if(currentTurn == "player1"){
-					player2.addAttempt(column, row-1);
+					player2.addAttempt(row-1, column); 
 				}
 				else{
-					player1.addAttempt(column, row-1);
+					player1.addAttempt(row-1, column);
 				}
 				validInput = true;//if we got to this point without throwing an exception, then we can stop looping and pass the turn
 			}
