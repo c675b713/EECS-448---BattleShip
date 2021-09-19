@@ -6,16 +6,14 @@ SetUp::SetUp(){
 	string rowString, colString;
 	bool valid_input = false;
 	cout << "Welcome to Battleship!" << endl;
-	cout << "How many ships do you want to play with?";
-	try{
+	cout << "How many ships do you want to play with?\n";
+	do
+	{
 		cin >> ships;
-    		if(ships < 1 || ships > 6){ 
-   			throw string("wrong number of ships");
+    		if(ships < 1 || ships > 6){
+   			cout << "That is an invalid number of ships! Please try again." << endl;
    		}
-	}
-	catch(...){
-		cout << "That is an invalid number of ships! Please restart the program to try again." << endl;
-	}
+	}while(ships<1 || ships > 6);
 	for (int playerNum = 1; playerNum<=2; playerNum++){
 		cout << "Hello Player " << playerNum << "!" << endl;
 		for (int i =1; i<=ships; i++){
