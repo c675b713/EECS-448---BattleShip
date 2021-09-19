@@ -23,14 +23,41 @@ int main(){
 	string columnLetter, rowString;
 	int column, row;
 	bool validInput;
+	bool isStarted = 0;
 	
 	while (!player1.isGameOver() && !player2.isGameOver()){//while neither player has lost the game
-		cout << "Hello " + currentTurn + "! Here is your opponent's board" << endl;
+	  cout << string(1000, '\n');
+	  cout << "-----\nLegend\n-----\nX: Hit\n*: Opposing player's missed attempt\n#: Live ship\n~: Empty ocean\n\n";
+		cout << "Hello " + currentTurn + "! Here are the attempts you've made on your opponent's board" << endl;
 		if(currentTurn == "player1"){
 			player2.printEnemyPhase();
+			if(isStarted)
+			{
+			  if(player1.isHit(row-1, column))
+		    {
+		    	cout << "\n\nYour opponent landed a hit! \n";
+		    }
+		    else
+		    {
+		    	cout << "\n\nYour opponent missed. \n";
+		    }
+			}
+		  cout << "Here is your board:\n";
+		  player1.printPlayerPhase();
+			isStarted = 1;
 		}
 		else{
 			player1.printEnemyPhase();
+			if(player2.isHit(row-1, column))
+		  {
+		  	cout << "\n\nYour opponent landed a hit! \n";
+		  }
+		  else
+		  {
+		  	cout << "\n\nYour opponent missed. \n";
+		  }
+			cout << "Here is your board:\n";
+			player2.printPlayerPhase();
 		}
 		validInput = false;
 		while(validInput == false){
