@@ -1,11 +1,11 @@
 /**
 *	File Name: ShipMap.hpp
 *	Author: Ian Strasma
-*	Date: 09/08/2021 
+*	Date: 09/08/2021
 *	Brief: The implementation file for ShipMap class
 */
 
-///PLEASE LET ME KNOW IF YOU FIND ANY MISTAKES IN HERE 
+///PLEASE LET ME KNOW IF YOU FIND ANY MISTAKES IN HERE
 
 ///We need to accomodate the user's entry for coordinates, either in the executive class or in these functions
 ///We should probably convert the A-J into ASCII to get integers for columns??? Maybe just subtract 1 from all the row integers
@@ -48,11 +48,11 @@ bool ShipMap::isHit(int row, int col) ///returns 1 if a ship has been hit
 void ShipMap::addShip(int row, int col, int shipSize) ///Adds a ship to the ship array
 {
 	bool shipIsGood = 0; //used to end while loop
-	char shipDirection = 'a'; 
+	char shipDirection = 'a';
 	bool isDirectionGood = 0;
 	while(shipIsGood == 0)
 	{
-		try 
+		try
 		{
 			if(ships[row][col] == 1) ///throws an error when ship is already in initial space
 			{
@@ -72,7 +72,7 @@ void ShipMap::addShip(int row, int col, int shipSize) ///Adds a ship to the ship
 				{
 					throw string("Please enter either L, R, U, or D");
 				}
-				else 
+				else
 				{
 					isDirectionGood = isShipDirectionGood(row, col, shipSize, shipDirection);
 					if(isDirectionGood == 1) ///will only run if ship can be placed in that direction
@@ -118,16 +118,16 @@ void ShipMap::addShip(int row, int col, int shipSize) ///Adds a ship to the ship
 					{
 						if(isShipDirectionGood(row, col, shipSize, 'L') == 0 && isShipDirectionGood(row, col, shipSize, 'R') == 0 && isShipDirectionGood(row, col, shipSize, 'U') == 0 && isShipDirectionGood(row, col, shipSize, 'D') == 0)
 						{
-							///end the function, a ship with this length cannot be placed here
+							throw string("The ship is off the grid; please try again.");
 						}
-						throw string("This Direction doesn't work. please choose another");
+						//throw string("This Direction doesn't work. please choose another");
 					}
 				}
 			}
 		}
-		catch(invalid_argument)
+		catch(string invalid_argument)
 		{
-			///TBA
+			cout<<invalid_argument<<endl;
 		}
 	}
 }
@@ -143,7 +143,7 @@ void ShipMap::addAttempt(int row, int col) ///Adds an attempt to the attempt arr
 			if(isHit(row, col))
 			{
 				lives--;
-				cout << "HIT! \n"; ///can change notation later 
+				cout << "HIT! \n"; ///can change notation later
 			}
 			else
 			{
@@ -228,7 +228,7 @@ bool ShipMap::isGameOver() ///returns true if there are 0 ships left
 bool ShipMap::isShipDirectionGood(int row, int col, int shipSize, char shipDirection) ///checks if a ship can be placed in a certain direction
 {
 	bool itWorks = 1;
-	if(shipDirection == 'L') 
+	if(shipDirection == 'L')
 	{
 		if((col - (shipSize - 1)) < 0) ///checks to see if ship would go off the grid
 		{
@@ -262,7 +262,7 @@ bool ShipMap::isShipDirectionGood(int row, int col, int shipSize, char shipDirec
 			}
 		}
 	}
-	if(shipDirection == 'U') 
+	if(shipDirection == 'U')
 	{
 		if((row - (shipSize - 1)) < 0) ///checks to see if ship would go off the grid
 		{
@@ -279,7 +279,7 @@ bool ShipMap::isShipDirectionGood(int row, int col, int shipSize, char shipDirec
 			}
 		}
 	}
-	if(shipDirection == 'D') 
+	if(shipDirection == 'D')
 	{
 		if((row + (shipSize - 1)) > 8) ///checks to see if ship would go off the grid
 		{
