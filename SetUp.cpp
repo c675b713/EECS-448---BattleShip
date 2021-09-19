@@ -31,7 +31,7 @@ SetUp::SetUp(){
 					col = SetUp::lettersToNumbers(colString);
           				cout << "Row: ";
 					cin >> rowString;
-					row = stoi(rowString);//throws an invalid_argument exeption when it fails;
+					row = stoi(rowString);//throws an invalid_argument exception when it fails;
 					if(row < 1 || row > 9){
 						throw string("Out of Bounds");
 					}

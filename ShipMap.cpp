@@ -5,12 +5,6 @@
 *	Brief: The implementation file for ShipMap class
 */
 
-///PLEASE LET ME KNOW IF YOU FIND ANY MISTAKES IN HERE
-
-///We need to accomodate the user's entry for coordinates, either in the executive class or in these functions
-///We should probably convert the A-J into ASCII to get integers for columns??? Maybe just subtract 1 from all the row integers
-///Also we need to find the best way to make sure all the user's inputs work with the program
-
 #include "ShipMap.h"
 #include <stdexcept>
 using namespace std;
@@ -135,7 +129,7 @@ void ShipMap::addShip(int row, int col, int shipSize) ///Adds a ship to the ship
 void ShipMap::addAttempt(int row, int col) ///Adds an attempt to the attempt array
 {
 	bool attemptIsGood = 0;
-	while (attemptIsGood == 0) ///this might be temporary but I think its the best way to make sure that a ship is placed in an empty spot
+	while (attemptIsGood == 0) 
 	{
 		if(attempts[row][col] == 0)
 		{
@@ -143,17 +137,17 @@ void ShipMap::addAttempt(int row, int col) ///Adds an attempt to the attempt arr
 			if(isHit(row, col))
 			{
 				lives--;
-				cout << "HIT! \n"; ///can change notation later
+				cout << "HIT! \n"; 
 			}
 			else
 			{
-				cout << "Miss. "; ///can change notation later
+				cout << "Miss. \n";
 			}
 			attemptIsGood = 1;
 		}
 		else
 		{
-			// prompts user to reenter coordinates (will do later if this is best solution)
+			// prompts user to reenter coordinates 
 			throw string("You have already shot that square, please try again.");
 		}
 	}
@@ -161,15 +155,15 @@ void ShipMap::addAttempt(int row, int col) ///Adds an attempt to the attempt arr
 
 void ShipMap::printPlayerPhase() ///prints the grid showing information during player phase
 {
-	cout << "   A B C D E F G H I J \n"; ///this could be used to label the columns?? subject to change ofc
+	cout << "   A B C D E F G H I J \n"; ///labels columns
 	for(int i = 0; i < 9; i++)
 	{
-		cout << i+1 << "  "; ///this could be used to label the rows?? subject to change ofc
+		cout << i+1 << "  "; ///labels rows
 		for(int j = 0; j < 10; j++)
 		{
 			if(ships[i][j] == 1 && attempts[i][j] == 1) ///prints a hit
 			{
-				cout << "X "; //we can change any of this notation later
+				cout << "X "; 
 			}
 			else if(ships[i][j] == 1 && attempts[i][j] == 0) ///prints an untouched ship
 			{
@@ -190,15 +184,15 @@ void ShipMap::printPlayerPhase() ///prints the grid showing information during p
 
 void ShipMap::printEnemyPhase() ///prints the grid showing information during enemy phase
 {
-	cout << "   A B C D E F G H I J \n"; ///this could be used to label the columns?? subject to change ofc
+	cout << "   A B C D E F G H I J \n"; ///labels columns
 	for(int i = 0; i < 9; i++)
 	{
-		cout << i+1 << "  "; ///this could be used to label the rows?? subject to change ofc
+		cout << i+1 << "  "; ///labels rows
 		for(int j = 0; j < 10; j++)
 		{
 			if(ships[i][j] == 1 && attempts[i][j] == 1) //prints a hit
 			{
-				cout << "X "; ///we can change any of this notation later
+				cout << "X "; 
 			}
 			else if(ships[i][j] == 0 && attempts[i][j] == 1) // prints a miss
 			{
