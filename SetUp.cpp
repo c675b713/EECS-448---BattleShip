@@ -102,7 +102,7 @@ int SetUp::lettersToNumbers(string letter){
 	else if(letter == "G" || letter == "g"){
 		return 6;
 	}
-	else if(letter == "H" || letter == "H"){
+	else if(letter == "H" || letter == "h"){
 		return 7;
 	}
 	else if(letter == "I" || letter == "i"){
