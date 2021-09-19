@@ -161,7 +161,7 @@ void ShipMap::addAttempt(int row, int col) ///Adds an attempt to the attempt arr
 
 void ShipMap::printPlayerPhase() ///prints the grid showing information during player phase
 {
-	cout << "  A B C D E F G H I J \n"; ///this could be used to label the columns?? subject to change ofc
+	cout << "   A B C D E F G H I J \n"; ///this could be used to label the columns?? subject to change ofc
 	for(int i = 0; i < 9; i++)
 	{
 		cout << i+1 << "  "; ///this could be used to label the rows?? subject to change ofc
@@ -190,7 +190,7 @@ void ShipMap::printPlayerPhase() ///prints the grid showing information during p
 
 void ShipMap::printEnemyPhase() ///prints the grid showing information during enemy phase
 {
-	cout << "  A B C D E F G H I J \n"; ///this could be used to label the columns?? subject to change ofc
+	cout << "   A B C D E F G H I J \n"; ///this could be used to label the columns?? subject to change ofc
 	for(int i = 0; i < 9; i++)
 	{
 		cout << i+1 << "  "; ///this could be used to label the rows?? subject to change ofc
